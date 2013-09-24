@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.esiea.web_dev.miammiam;
+package fr.esiea.web_dev.miammiam.core;
 
 /**
  * @author broquet
