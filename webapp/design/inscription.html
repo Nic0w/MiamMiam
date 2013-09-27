@@ -22,9 +22,9 @@
 				<!-- LISTE MENU -->
 				<ul>
 					<li><a href="index.html"><img id="pic-home" src="img/home.png" alt="pictoHome"/></a><a href="#">Home</a></li>
-					<li><a href="About.html"><img id="pic-about" src="img/user.png" alt="pictoAboutUs"/></a><a href="About.html">About us</a></li>
-					<li><a href="customer.html"><img id="pic-search" src="img/search.png" alt="pictoResearch"/></a><a href="customer.html">Research</a></li>
-					<li><a href="Contact.html"><img id="pic-mail" src="img/mail.png" alt="pictoMail"/></a> <a href="Contact.html">Contact</a></li>
+					<li><a href="About.html"><img id="pic-about" src="img/user.png" alt="pictoAboutUs"/></a><a href="#">About us</a></li>
+					<li><a href="customer.html"><img id="pic-search" src="img/search.png" alt="pictoResearch"/></a><a href="#">Research</a></li>
+					<li><a href="Contact.html"><img id="pic-mail" src="img/mail.png" alt="pictoMail"/></a> <a href="#l">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 		<!-- HEART -->
 		<div class="container center">	
 			<form id="userForm" action="#" method="#">
-				<label class="labelForm">Adresse e-mail<input class="inputForm" type="email" name="mail"></label>
-				<label class="labelForm">Mot de passe<input class="inputForm" type="password" name="pwd"></label>
-				<label class="labelForm">Confirmation mot de passe<input class="inputForm" type="password" name="confPwd"></label>
-				<input type="submit" value="Enregistrer" class="button"/>
+				<label class="labelForm" id="labMail">Adresse e-mail<input class="inputForm" id="mail" type="email" name="mail"></label>
+				<label class="labelForm" id="labelPwd">Mot de passe (min 6 caractères)<input id="pwd" class="inputForm" type="password" name="pwd"></label>
+				<label class="labelForm" id="labelCpwd">Confirmation mot de passe<input id="cpwd" class="inputForm" type="password" name="confPwd"></label>
+				<input id="envoieFormUser" type="submit" value="Enregistrer" class="button"/>
 			</form>
 		</div>
 		<!-- END HEART -->
