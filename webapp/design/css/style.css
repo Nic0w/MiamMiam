@@ -282,6 +282,22 @@ padding:20px 0 0 0;
 	padding-bottom: 20px;
 }
 
+
+.labelRecherche{
+	width: 170px;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+table{
+	margin-bottom: 20px;
+}
+td{
+	width: 250px;
+	height: 20px;
+	font-size: 18px;
+}
+
+
 #footer p{
 color:#696969;
 float:right;
