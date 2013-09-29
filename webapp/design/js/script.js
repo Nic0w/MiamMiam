@@ -1,5 +1,4 @@
 $(document).ready(function(){
-		// email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
 // Security new user's form
 	$("#envoieFormUser").click(function(){
@@ -8,7 +7,7 @@ $(document).ready(function(){
 		vpwd=0;
 		vcpwd =0;
 		// verif mail
-		if($("#mail").val() == ""){
+		if(($("#mail").val() == "") /*|| ($("#mail").match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i))*/){
 			$("#mail").css("border-color","#ff0000");
 			$("#labMail").css("color", "#ff0000");
 			vmail ++;
