@@ -51,7 +51,21 @@ $(document).ready(function(){
 		else
 			return false;
 	});
-
+// Security research's user
+	valid = true;
+	$("#envoieRecherche").click(function(){
+		if($("#farine").is(':checked')||$("#sucre").is(':checked')||$("#huile").is(':checked')||$("#lait").is(':checked')||$("#beurre").is(':checked')||$("#oeuf").is(':checked')||$("#fruit").is(':checked')||$("#sucreV").is(':checked')||$("#levure").is(':checked')||$("#coco").is(':checked')||$("#vanille").is(':checked')){
+			$("#validIngredient").css("visibility","hidden");
+			valid=true
+		}
+		else{
+			$("#validIngredient").css("visibility","visible");
+			valid = false;
+		}
+		return valid;
+			
+	
+	});
 
 
 

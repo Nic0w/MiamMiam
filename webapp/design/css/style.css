@@ -282,7 +282,9 @@ padding:20px 0 0 0;
 	padding-bottom: 20px;
 }
 
-
+/****************/
+/* Recherche */
+/****************/
 .labelRecherche{
 	width: 170px;
 	display: inline-block;
@@ -296,7 +298,12 @@ td{
 	height: 20px;
 	font-size: 18px;
 }
-
+.errorMessage{
+	color:red;
+	text-decoration: underline;
+	font-weight: bold;
+	visibility: hidden;
+}
 
 #footer p{
 color:#696969;
