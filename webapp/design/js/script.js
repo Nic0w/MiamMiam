@@ -62,9 +62,12 @@ $(document).ready(function(){
 			valid = false;
 		}
 		return valid;
-			
-	
 	});
+
+// Security Recipe
+	$("#envoieRecette").click(function(){
+		// alert($(".inputForm").is(":empty") );
+		});
 
 
 
