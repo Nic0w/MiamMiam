@@ -35,8 +35,8 @@
 			<h1>Nouvelle Recette</h1>
 			<form id="recipeForm" action="#" method="#">
 				<h2>Ingrédients</h2>
-				<label class="labelForm" id="">Photo de la recette<input class="inputForm" id="" type="file" name=""></label>
-				<label class="labelForm" id="">Nom <input id="" class="inputForm" type="text"  name=""></label>
+				<label class="labelForm" id="labelRphoto">Photo <b class="star">*</b><input class="inputForm " id="Rphoto" type="file" name=""></label>
+				<label class="labelForm" id="labelRnom">Nom <b class="star">*</b> <input id="Rnom" class="inputForm " type="text"  name=""></label>
 				<label class="labelForm" id="">Sucre (g)<input id="" class="inputForm" type="number" step="5" min="0" name=""></label>
 				<label class="labelForm" id="">Farine (g)<input id="" class="inputForm" type="number" step="5" min="0" name=""></label>
 				<label class="labelForm" id="">Huile (c.s.)<input id="" class="inputForm" type="number" step="1" min="0" name=""></label>
@@ -49,15 +49,14 @@
 				<label class="labelForm" id="">Vanille (g)<input id="" class="inputForm" type="number" step="5" min="0" name=""></label>
 				<label class="labelForm" id="">Autre (sel, eau) <input id="" class="inputForm" type="text"  name=""></label>
 				<h2>Informations</h2>
-				<label class="labelForm" id="">Nombre de personne<input id="" class="inputForm" type="number" step="1" min="0" name=""></label>
-				<label class="labelForm" id="">Préparation (min)<input id="" class="inputForm" type="number" step="1" min="0" name=""></label>
-				<label class="labelForm" id="">Cuisson<input id="" class="inputForm" type="number" step="1" min="0" name=""></label>
+				<label class="labelForm" id="labelRpersonne">Nombre de personne <b class="star">*</b><input id="Rpersonne" class="inputForm " type="number" step="1" min="0" name=""></label>
+				<label class="labelForm" id="labelRprep">Préparation (min) <b class="star">*</b><input id="Rprep" class="inputForm " type="number" step="1" min="0" name=""></label>
+				<label class="labelForm" id="labelRcuisson">Cuisson (min) <b class="star">*</b><input id="Rcuisson" class="inputForm " type="number" step="1" min="0" name=""></label>
 				<h2>Préparation</h2>
-				<label class="labelForm" id="">Etape n°1: <input id="" class="inputForm" type="text"  name="" value="Préchauffer le four 240°"></label>
-				<div>
-					<input type="button" class="button" value="Etape suivante"/>
-				</div>
+				<label class="labelForm" id="labelRetape">Etapes <b class="star">*</b> <textarea  id="Retape" class="inputForm " type="text"  name="" ></textarea>
+				<div>	
 					<input id="envoieRecette" type="submit" value="Enregistrer" class="button"/>
+				</div>
 			</form>
 		</div>
 		<!-- END HEART -->
