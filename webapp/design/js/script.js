@@ -144,7 +144,7 @@ $(document).ready(function(){
 		}				
 		// autorisation
 		valide = vPhoto + vPersonne + vPrep + vCuisson + vNom + vEtape;
-		alert(valide);
+		
 		if (valide == 0)
 			return true;
 		else
