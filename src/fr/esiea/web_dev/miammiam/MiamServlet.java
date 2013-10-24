@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.collect.Maps;
 
+import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
 
 /**
@@ -39,6 +40,8 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("apropos", new PageController("apropos.jsp"));
     	this.registerController("contact", new PageController("contact.jsp"));
     	this.registerController("inscription", new PageController("inscription.jsp"));
+    	
+    	this.registerController("new_user", new InscriptionController());
     }
     
     private MiamServlet registerController(String action, MiamController controller) {

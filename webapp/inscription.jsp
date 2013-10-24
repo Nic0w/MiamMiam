@@ -31,7 +31,7 @@
 		
 		<!-- HEART -->
 		<div class="container center">	
-			<form id="userForm" action="#" method="#">
+			<form id="userForm" action="new_user" method="POST">
 				<label class="labelForm" id="labMail">Adresse e-mail<input class="inputForm" id="mail" type="email" name="mail"></label>
 				<label class="labelForm" id="labelPwd">Mot de passe (min 6 caractères)<input id="pwd" class="inputForm" type="password" name="pwd"></label>
 				<label class="labelForm" id="labelCpwd">Confirmation mot de passe<input id="cpwd" class="inputForm" type="password" name="confPwd"></label>

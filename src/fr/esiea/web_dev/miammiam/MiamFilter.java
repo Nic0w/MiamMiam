@@ -70,7 +70,7 @@ public class MiamFilter implements Filter {
 		
 		String action = this.getAction(req.getRequestURI()).toLowerCase();
 		
-		System.out.println("Action = '" + action+ "' zzqrfggsdfgsdgdfgdfggdgdf");
+		System.out.println("Action = '" + action+ "'");
 		System.out.println("Parameters = " + req.getQueryString());
 		
 		/*if(action.equalsIgnoreCase("")) {
