@@ -54,4 +54,4 @@ Elle peut se manger à température ambiante ou bien glacée et recouverte de ch
 		</div>	
 		<!-- END HEART -->
 
-<%@include file="includes/header.jsp" %>
+<%@include file="includes/footer.jsp" %>

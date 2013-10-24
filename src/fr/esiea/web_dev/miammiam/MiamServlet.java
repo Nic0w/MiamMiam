@@ -37,6 +37,7 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("", home);
     	this.registerController("home", home);
     	this.registerController("apropos", new PageController("apropos.jsp"));
+    	this.registerController("contact", new PageController("contact.jsp"));
     }
     
     private MiamServlet registerController(String action, MiamController controller) {
