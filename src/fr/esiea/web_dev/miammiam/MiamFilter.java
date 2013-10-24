@@ -29,7 +29,7 @@ public class MiamFilter implements Filter {
     public MiamFilter() {
         
     	
-    	this.ignoreList = Arrays.asList(new String[] { "home", "css", "img", "img2", "js" });
+    	this.ignoreList = Arrays.asList(new String[] {  "css", "img", "img2", "js" });
     }
 
 	/**
@@ -73,13 +73,13 @@ public class MiamFilter implements Filter {
 		System.out.println("Action = '" + action+ "' zzqrfggsdfgsdgdfgdfggdgdf");
 		System.out.println("Parameters = " + req.getQueryString());
 		
-		if(action.equalsIgnoreCase("")) {
+		/*if(action.equalsIgnoreCase("")) {
 			System.out.println("redirecting to home");
 			
 			
 			request.getRequestDispatcher("/home.jsp").forward(request, response);
 			return;
-		}
+		}*/
 		
 		
 		req.setAttribute("action", action);

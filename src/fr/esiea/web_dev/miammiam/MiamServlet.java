@@ -32,8 +32,10 @@ public class MiamServlet extends HttpServlet {
      */
     public MiamServlet() {
     	
+    	PageController home = new PageController("home.jsp");
     	
-    	this.registerController("", new PageController("home.jsp"));
+    	this.registerController("", home);
+    	this.registerController("home", home);
     	this.registerController("apropos", new PageController("apropos.jsp"));
     }
     
@@ -50,16 +52,18 @@ public class MiamServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
-		Enumeration<String> actions = request.getAttributeNames();
+		/*Enumeration<String> actions = request.getAttributeNames();
 		
 		String action = null;
 		if(actions.hasMoreElements())
-			action = actions.nextElement();
+			action = actions.nextElement();*/
+		
+		String action = (String) request.getAttribute("action");
 		
 		
 		MiamController controller = this.controllers.get(action);
 		
-		//controller.execute(request, response);
+		controller.execute(request, response);
 		
 	}
 

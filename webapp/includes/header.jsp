@@ -19,8 +19,8 @@
 			<div class="center">
 				<!-- LISTE MENU -->
 				<ul>
-					<li><a href="#"><img id="pic-home" src="img/home.png" alt="pictoHome"/></a><a href="#">Accueil</a></li>
-					<li><a href="aPropos.html"><img id="pic-about" src="img/user.png" alt="pictoAboutUs"/></a><a href="aPropos.html">A propos</a></li>
+					<li><a href="#"><img id="pic-home" src="img/home.png" alt="pictoHome"/></a><a href="home">Accueil</a></li>
+					<li><a href="aPropos.html"><img id="pic-about" src="img/user.png" alt="pictoAboutUs"/></a><a href="apropos">A propos</a></li>
 					<li><a href="contact.html"><img id="pic-mail" src="img/mail.png" alt="pictoMail"/></a> <a href="contact.html">Contact</a></li>
 				</ul>
 				<!-- PSEUDO MDP -->
