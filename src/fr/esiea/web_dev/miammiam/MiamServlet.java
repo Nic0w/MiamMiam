@@ -3,6 +3,9 @@ package fr.esiea.web_dev.miammiam;
 import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -12,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 
 import com.google.common.collect.Maps;
 
@@ -28,10 +35,27 @@ public class MiamServlet extends HttpServlet {
 
 	private final Map<String, MiamController> controllers = newHashMap();
 	
+	private static final String DB_USER 		= "miam";
+	private static final String DB_PASSWORD	= "wJsYBGR74BMa4ups"; //OMG Hardcoded password !
+	private static final String DB_URL		= "jdbc:mysql://localhost:3306/miam";
+	
+	private final DSLContext miam;
+	
     /**
      * Default constructor. 
      */
     public MiamServlet() {
+    	
+    	Connection sqlConn = null;
+    	
+    	try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			sqlConn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			throw new RuntimeException(e);
+		}
+    	
+    	this.miam = DSL.using(sqlConn, SQLDialect.MYSQL);
     	
     	PageController home = new PageController("home.jsp");
     	
@@ -41,8 +65,11 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("contact", new PageController("contact.jsp"));
     	this.registerController("inscription", new PageController("inscription.jsp"));
     	
-    	this.registerController("new_user", new InscriptionController());
+    	this.registerController("new_user", new InscriptionController(this.miam));
     }
+    
+   
+    
     
     private MiamServlet registerController(String action, MiamController controller) {
     	

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+  <!-- Configure the database connection here -->
+  <jdbc>
+    <driver>com.mysql.jdbc.Driver</driver>
+    <url>jdbc:mysql://localhost:3306/miam</url>
+    <user>miam</user>
+    <password>wJsYBGR74BMa4ups</password>
+  </jdbc>
+
+  <generator>
+    <database>
+      <name>org.jooq.util.mysql.MySQLDatabase</name>
+
+      <includes>.*</includes>
+      <excludes></excludes>
+
+      <inputSchema>miam</inputSchema>
+    </database>
+
+    <generate>
+      <!-- Generation flags: See advanced configuration properties -->
+      <generatedAnnotation>false</generatedAnnotation>
+    </generate>
+
+    <target>
+      <!-- The destination package of your generated classes (within the
+           destination directory) -->
+      <packageName>fr.esiea.web_dev.miammiam.db</packageName>
+
+      <!-- The destination directory of your generated classes -->
+      <directory>src/</directory>
+    </target>
+  </generator>
+</configuration>
