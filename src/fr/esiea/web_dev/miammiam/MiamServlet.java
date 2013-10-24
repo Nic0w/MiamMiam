@@ -23,6 +23,7 @@ import org.jooq.impl.DSL;
 import com.google.common.collect.Maps;
 
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
+import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
 
 /**
@@ -66,6 +67,7 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("inscription", new PageController("inscription.jsp"));
     	
     	this.registerController("new_user", new InscriptionController(this.miam));
+    	this.registerController("login", new LoginController(this.miam));
     }
     
    

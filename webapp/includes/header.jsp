@@ -25,7 +25,7 @@
 				</ul>
 				<!-- PSEUDO MDP -->
 				<div id="login">
-					<form method="POST" action="index.jsp">
+					<form method="POST" action="login">
    					    	<label for="log">Log in :</label>
   					     	<input class="txt" type="text" name="pseudo" id="pseudo" value="" />
   					     	<label for="pass">Password :</label>
