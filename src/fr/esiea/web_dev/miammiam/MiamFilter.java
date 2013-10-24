@@ -1,6 +1,8 @@
 package fr.esiea.web_dev.miammiam;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,11 +21,15 @@ public class MiamFilter implements Filter {
 	
 	private String contextPath;
 	
+	private List<String> ignoreList;
+	
     /**
      * Default constructor. 
      */
     public MiamFilter() {
         
+    	
+    	this.ignoreList = Arrays.asList(new String[] { "home", "css", "img", "img2", "js" });
     }
 
 	/**
@@ -39,6 +45,15 @@ public class MiamFilter implements Filter {
 	}
 	
 	
+	private boolean ignoreRequest(String s) {
+		
+		for(String ignore : this.ignoreList)
+			if(s.contains(ignore))
+				return true;
+		
+		return false;
+	}
+	
 	
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
@@ -47,16 +62,27 @@ public class MiamFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		
-		
-		if(req.getRequestURI().contains("/MiamServlet"))
+		if(ignoreRequest(req.getRequestURI())) {
 			chain.doFilter(req, response);
+			return;
+		}
+			
 		
 		String action = this.getAction(req.getRequestURI()).toLowerCase();
 		
-		System.out.println("Action = " + action);
+		System.out.println("Action = '" + action+ "' zzqrfggsdfgsdgdfgdfggdgdf");
 		System.out.println("Parameters = " + req.getQueryString());
 		
-		req.setAttribute(action, null);
+		if(action.equalsIgnoreCase("")) {
+			System.out.println("redirecting to home");
+			
+			
+			request.getRequestDispatcher("/home.jsp").forward(request, response);
+			return;
+		}
+		
+		
+		req.setAttribute("action", action);
 		
 		request.getRequestDispatcher("/MiamServlet").forward(request, response);
 		

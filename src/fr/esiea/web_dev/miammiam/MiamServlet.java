@@ -50,11 +50,13 @@ public class MiamServlet extends HttpServlet {
 		
 		Enumeration<String> actions = request.getAttributeNames();
 		
-		String action;
+		String action = null;
 		if(actions.hasMoreElements())
 			action = actions.nextElement();
 		
-		this.controllers.get(key);
+		
+		
+		this.controllers.get(action);
 		
 		
 		
