@@ -29,7 +29,7 @@ public class User {
 	private final boolean isAdmin;
 	
 	
-	public User(Integer id, String userMail, boolean isAdmin) {
+	protected User(Integer id, String userMail, boolean isAdmin) {
 		this.id = id;
 		this.mail		= userMail;
 		this.isAdmin	= isAdmin;
@@ -49,58 +49,12 @@ public class User {
 
 	public static boolean isLoggedIn(DSLContext miam, HttpSession session) {
 		
-		String session_uid = (String) session.getAttribute("uid");
+		Session storedSession = Session.getSession(miam, session);
 		
-		System.out.println("Session id = " + session_uid);
-		
-		if(session_uid == null)
+		if(storedSession == null)
 			return false;
 		
-		Result<Record1<Timestamp>> storedSessions = miam.select(SESSIONS.EXPIRATION).from(SESSIONS).where(SESSIONS.UID.eq(session_uid)).fetch();
-		
-		if(storedSessions.size() == 0) {
-			
-			System.out.println("Warning : outdated cookie or attempt at session spoofing !");
-			
-			return false;
-		}
-			
-		Timestamp expiration_date = storedSessions.get(0).value1();
-		
-
-		System.out.println("Is user logged in ?");
-		
-		return expiration_date.after(new Date());
-	}
-
-	public static User loadUser(DSLContext miam, HttpSession session) {
-		
-		String session_uid = (String) session.getAttribute("uid");
-		
-		if(session_uid == null)
-			return null;
-		
-		Result<Record> users = miam.
-				select().
-					from(SESSIONS.join(USER).on(SESSIONS.USER.equal(USER.ID))).
-					where(SESSIONS.UID.equal(session_uid)).
-				fetch();
-		
-		if(users.size() == 0) {
-			
-			System.out.println("Fake session, fake user or it user doesn't exist.");
-			
-			return null;
-		}
-		
-		Record loggedInUser = users.get(0);
-		
-		Integer id		 = loggedInUser.getValue(USER.ID);
-		String userMail  = loggedInUser.getValue(USER.MAIL);
-		boolean isAdmin = loggedInUser.getValue(USER.ADMIN) == 1;
-		
-		
-		return new User(id, userMail, isAdmin);
+		return storedSession.isValid();
 	}
 	
 	public static User login(DSLContext miam, String mail, String password) {

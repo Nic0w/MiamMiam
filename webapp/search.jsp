@@ -30,6 +30,13 @@
 				</form>
 			</div>
 			<h2>Votre historique</h2>
+			
+			<%
+				
+			
+			
+			%>
+			
 			<table border="1">
 				<tr>
 					<th>Date</th>

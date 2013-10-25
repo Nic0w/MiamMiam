@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.jooq.DSLContext;
 
+import fr.esiea.web_dev.miammiam.core.Session;
 import fr.esiea.web_dev.miammiam.core.User;
 
 /**
@@ -38,21 +39,18 @@ public class RestrictedPageController extends PageController {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+		Session storedSession = Session.getSession(miam, request.getSession());
 		
 		System.out.println("P0LOPOPLP");
 		
-		if(User.isLoggedIn(this.miam, session)) {
+		if(storedSession.isValid()) {
 			
 			System.out.println("User is logged in...");
 			
-			User user = (User) request.getAttribute("user");
+			User user = storedSession.getUser();
 			
-			if(user == null) {
-				 user = User.loadUser(miam, session);
+			if(request.getAttribute("user") == null)
 				 request.setAttribute("user", user);
-			}
-			
 			
 			if(this.isAdminOnly && !user.isAdmin()) {
 				
@@ -60,7 +58,6 @@ public class RestrictedPageController extends PageController {
 				
 				return;
 			}
-			
 			
 			System.out.println("AND HERE WE GO MOTHER FUCKER !");
 			

@@ -25,6 +25,7 @@ import com.google.common.collect.Maps;
 
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
+import fr.esiea.web_dev.miammiam.controllers.LogoutController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
 import fr.esiea.web_dev.miammiam.controllers.RestrictedPageController;
 import fr.esiea.web_dev.miammiam.core.User;
@@ -73,6 +74,7 @@ public class MiamServlet extends HttpServlet {
     	
     	this.registerController("new_user", new InscriptionController(this.miam));
     	this.registerController("login", new LoginController(this.miam));
+    	this.registerController("logout", new LogoutController(this.miam));
     }
     
     private MiamServlet registerController(String action, MiamController controller) {
