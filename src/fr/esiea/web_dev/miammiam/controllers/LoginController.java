@@ -20,7 +20,7 @@ import fr.esiea.web_dev.miammiam.core.User;
 
 public class LoginController implements MiamController {
 
-	private static final int SESSION_DURATION = 3000; //in milliseconds
+	private static final int SESSION_DURATION = 300000; //in milliseconds
 	
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	
@@ -119,7 +119,9 @@ public class LoginController implements MiamController {
 		}
 		else {
 			
-			request.getRequestDispatcher("/search").forward(request, response);
+			request.setAttribute("action", "search");
+			
+			request.getRequestDispatcher("/MiamServlet").forward(request, response);
 			
 		}
 		

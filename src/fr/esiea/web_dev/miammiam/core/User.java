@@ -51,6 +51,8 @@ public class User {
 		
 		String session_uid = (String) session.getAttribute("uid");
 		
+		System.out.println("Session id = " + session_uid);
+		
 		if(session_uid == null)
 			return false;
 		
@@ -66,6 +68,8 @@ public class User {
 		Timestamp expiration_date = storedSessions.get(0).value1();
 		
 
+		System.out.println("Is user logged in ?");
+		
 		return expiration_date.after(new Date());
 	}
 

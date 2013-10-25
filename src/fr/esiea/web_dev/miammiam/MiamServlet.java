@@ -26,6 +26,7 @@ import com.google.common.collect.Maps;
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
+import fr.esiea.web_dev.miammiam.controllers.RestrictedPageController;
 import fr.esiea.web_dev.miammiam.core.User;
 
 /**
@@ -68,6 +69,8 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("contact", new PageController("contact.jsp"));
     	this.registerController("inscription", new PageController("inscription.jsp"));
     	
+    	this.registerController("search", new RestrictedPageController(this.miam, "search.jsp", false));
+    	
     	this.registerController("new_user", new InscriptionController(this.miam));
     	this.registerController("login", new LoginController(this.miam));
     }
@@ -92,15 +95,6 @@ public class MiamServlet extends HttpServlet {
 			action = actions.nextElement();*/
 		
 		String action = (String) request.getAttribute("action");
-		
-		HttpSession session = request.getSession();
-		
-		if(User.isLoggedIn(this.miam, session)) {
-			
-			User user = User.loadUser(this.miam, session);
-			
-			
-		}
 		
 		MiamController controller = this.controllers.get(action);
 		
