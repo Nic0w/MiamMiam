@@ -28,7 +28,7 @@
 			<div class="center">
 				<div id="productDesc" class="product">		
 					<h2>Fonctionnement</h2>
-					<p>Cette application permet à nos membres d'accéder en illimité et gratuitement à toutes nos recettes de manière simple. En effet en une étape seulement, il sélectionne les ingrédients qu'il a à sa disposition et notre moteur de recherche va lui proposer toutes les recettes de dessert qui correspondent à ses attentes. Si il souhaite retrouver une recette qu'il a déjà préparé, il accèdera à son historique personnalisé. <b style="color: blue; text-decoration:underline">Pour les tests: log admin: admin | mdp admin: admin et log user: root | mdp user: toor</b>.
+					<p>Cette application permet � nos membres d'acc�der en illimit� et gratuitement � toutes nos recettes de mani�re simple. En effet en une �tape seulement, il s�lectionne les ingr�dients qu'il a à sa disposition et notre moteur de recherche va lui proposer toutes les recettes de dessert qui correspondent à ses attentes. Si il souhaite retrouver une recette qu'il a déjà préparé, il accèdera à son historique personnalisé. <b style="color: blue; text-decoration:underline">Pour les tests: log admin: admin | mdp admin: admin et log user: root | mdp user: toor</b>.
 					</p>
 				</div>
 				<div class="product">

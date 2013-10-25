@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
@@ -25,6 +26,7 @@ import com.google.common.collect.Maps;
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
+import fr.esiea.web_dev.miammiam.core.User;
 
 /**
  * Servlet implementation class MiamServlet
@@ -70,9 +72,6 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("login", new LoginController(this.miam));
     }
     
-   
-    
-    
     private MiamServlet registerController(String action, MiamController controller) {
     	
     	this.controllers.put(action, controller);
@@ -94,6 +93,14 @@ public class MiamServlet extends HttpServlet {
 		
 		String action = (String) request.getAttribute("action");
 		
+		HttpSession session = request.getSession();
+		
+		if(User.isLoggedIn(this.miam, session)) {
+			
+			User user = User.loadUser(this.miam, session);
+			
+			
+		}
 		
 		MiamController controller = this.controllers.get(action);
 		
