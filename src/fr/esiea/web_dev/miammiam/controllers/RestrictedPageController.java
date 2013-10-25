@@ -21,7 +21,7 @@ import fr.esiea.web_dev.miammiam.core.User;
  */
 public class RestrictedPageController extends PageController {
 
-	private final DSLContext miam;
+	protected final DSLContext miam;
 	
 	private final boolean isAdminOnly;
 	

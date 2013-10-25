@@ -114,7 +114,9 @@ public class LoginController implements MiamController {
 		
 		if(user.isAdmin()) { //user is admin
 			
-			request.getRequestDispatcher("/admin").forward(request, response);
+			request.setAttribute("action", "admin");
+			
+			request.getRequestDispatcher("/MiamServlet").forward(request, response);
 			
 		}
 		else {

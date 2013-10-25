@@ -1,6 +1,7 @@
 package fr.esiea.web_dev.miammiam.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,15 +13,19 @@ import org.jooq.Record;
 import org.jooq.Result;
 
 import fr.esiea.web_dev.miammiam.MiamController;
-import static fr.esiea.web_dev.miammiam.db.Tables.*;
+import fr.esiea.web_dev.miammiam.db.tables.pojos.User;
+import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
 
 public class InscriptionController implements MiamController {
 
-	private final DSLContext miam;
 	
-	public InscriptionController(DSLContext miam) {
+	private final UserDao userTable;
+	
+	public InscriptionController(UserDao userDao) {
 		
-		this.miam = miam;
+		this.userTable = userDao;
+		
+		
 		
 	}
 
@@ -34,15 +39,16 @@ public class InscriptionController implements MiamController {
 		System.out.println("mail = " + userMail);
 		System.out.println("password = " + userPassword);
 		
-		Result<Record> result = miam.select().from(USER).where(USER.MAIL.equal(userMail)).fetch();
+		List<User> users = this.userTable.fetchByMail(userMail);
 		
 		
-		
-		if(result.size() == 0) { //User don't exist !
-			
-			
+		if(users.size() == 0) { //User don't exist !
+
 			System.out.println("Adding new user in db...");
-			miam.insertInto(USER, USER.MAIL, USER.PASSWORD, USER.ADMIN).values(userMail, userPassword, 0).execute();
+			
+			User newUser = new User(null, userMail, userPassword, 0);
+			
+			this.userTable.insert(newUser);
 			
 		}
 		

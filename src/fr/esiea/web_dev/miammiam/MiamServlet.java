@@ -29,6 +29,7 @@ import fr.esiea.web_dev.miammiam.controllers.LogoutController;
 import fr.esiea.web_dev.miammiam.controllers.PageController;
 import fr.esiea.web_dev.miammiam.controllers.RestrictedPageController;
 import fr.esiea.web_dev.miammiam.core.User;
+import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
 
 /**
  * Servlet implementation class MiamServlet
@@ -71,8 +72,9 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("inscription", new PageController("inscription.jsp"));
     	
     	this.registerController("search", new RestrictedPageController(this.miam, "search.jsp", false));
+    	this.registerController("admin", new RestrictedPageController(this.miam, "admin.jsp", true));
     	
-    	this.registerController("new_user", new InscriptionController(this.miam));
+    	this.registerController("new_user", new InscriptionController(new UserDao(this.miam.configuration())));
     	this.registerController("login", new LoginController(this.miam));
     	this.registerController("logout", new LogoutController(this.miam));
     }

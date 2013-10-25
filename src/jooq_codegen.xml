@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <!-- Configure the database connection here -->
   <jdbc>
@@ -21,6 +21,8 @@
     <generate>
       <!-- Generation flags: See advanced configuration properties -->
       <generatedAnnotation>false</generatedAnnotation>
+      <pojos>true</pojos>
+      <daos>true</daos>
     </generate>
 
     <target>
