@@ -39,7 +39,7 @@ public class MiamServlet extends HttpServlet {
 	private final Map<String, MiamController> controllers = newHashMap();
 	
 	private static final String DB_USER 		= "miam";
-	private static final String DB_PASSWORD	= "wJsYBGR74BMa4ups"; //OMG Hardcoded password !
+	private static final String DB_PASSWORD	= "test"; //OMG Hardcoded password !
 	private static final String DB_URL		= "jdbc:mysql://localhost:3306/miam";
 	
 	private final DSLContext miam;
