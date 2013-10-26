@@ -1,0 +1,7 @@
+Install java :
+sudo apt-get install openjdk-7-jre
+
+Install Apache & mod-jk :
+sudo apt-get install apache2-mpm-prefork libapache2-mod-jk
+
+http://apache.mirrors.multidist.eu/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz
