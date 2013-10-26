@@ -55,3 +55,12 @@ sudo cp $INSTALL_DIR/conf/maven_conf.xml apache-maven-3.1.1/conf/settings.xml
 export JAVA_HOME=/usr/lib/jvm/java-7-opendjk-i386
 export PATH=/opt/apache-maven-3.1.1/bin:$PATH
 
+cd $INSTALL_DIR
+
+mysql --user=root --password=$MYSQL_ROOT_PASSWORD < miam_structure.sql
+mysql --user=root --password=$MYSQL_ROOT_PASSWORD < miam_user.sql
+
+
+
+
+
