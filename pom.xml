@@ -26,6 +26,15 @@
             </configuration>
         </plugin>
         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>tomcat-maven-plugin</artifactId>
+            <configuration>
+                <url>http://127.0.0.1:8080/manager</url>
+                <server>tomcat</server>
+                <path>/MiamMiam</path>
+            </configuration>
+        </plugin>
+        <plugin>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-codegen-maven</artifactId>
             <version>3.2.0</version>
@@ -59,7 +68,7 @@
                             </generate>
                             <target>
                                 <!-- The destination package of your generated classes (within the
-                                           destination directory) -->
+                                                                           destination directory) -->
                                 <packageName>fr.esiea.web_dev.miammiam.db</packageName>
                                 <!-- The destination directory of your generated classes -->
                                 <directory>src/</directory>
