@@ -1,6 +1,12 @@
 #!/bin/sh
 
-sudo apt-get -q -y install openjdk-7-jre apache2-mpm-prefork libapache2-mod-jk mysql-server
+MYSQL_ROOT_PASSWORD="zkB4TfA3u3A9263"
+TOMCAT_ADMIN_PASSWORD="86Y1U2g31M5XvH8"
+
+echo "mysql-server-5.5 mysql-server/root_password $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again $MYSQL_ROOT_PASSWORD" | sudo debconf-set-selections 
+
+sudo apt-get -qq -y install openjdk-7-jre apache2-mpm-prefork libapache2-mod-jk mysql-server
 
 echo "JkWorkersFile /etc/apache2/workers.properties" | sudo tee -a /etc/apache2/mods-available/jk.load
 echo "JkLogFile /var/log/apache2/mod_jk.log" | sudo tee -a /etc/apache2/mods-available/jk.load
@@ -25,7 +31,23 @@ sudo wget http://apache.mirrors.multidist.eu/tomcat/tomcat-7/v7.0.42/bin/apache-
 
 sudo tar -xvf apache-tomcat-7.0.42.tar.gz
 
+sudo rm -f apache-tomcat-7.0.42/conf/tomcat-users.xml
+
+sudo touch apache-tomcat-7.0.42/conf/tomcat-users.xml
+
+echo "<?xml version='1.0' encoding='utf-8'?>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "<tomcat-users>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "  <role rolename=\"manager\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "  <role rolename=\"admin\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "  <user username=\"admin\" password=\"$TOMCAT_ADMIN_PASSWORD\" roles=\"admin,manager\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "</tomcat-users>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+
 cd /opt
 
 sudo wget http://mir2.ovh.net/ftp.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+
+sudo tar -xvf apache-maven-3.1.1-bin.tar.gz
+
+
+
 
