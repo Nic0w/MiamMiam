@@ -16,7 +16,10 @@ import javax.servlet.http.HttpSession;
 import org.jooq.DSLContext;
 
 import fr.esiea.web_dev.miammiam.MiamController;
-import fr.esiea.web_dev.miammiam.core.User;
+import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
+import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
+import fr.esiea.web_dev.miammiam.db.tables.pojos.Session;
+import fr.esiea.web_dev.miammiam.db.tables.pojos.User;
 
 public class LoginController implements MiamController {
 
@@ -24,19 +27,21 @@ public class LoginController implements MiamController {
 	
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	
-	private final DSLContext miam;
+	private final SessionDao sessionTable;
+	
+	private final UserDao userTable;
 	
 	private final Random random;
 	
-	public LoginController(DSLContext miam) {
-		
-		this.miam = miam;
+	public LoginController(SessionDao sessionTable, UserDao userTable) {
 		
 		random = new Random(System.currentTimeMillis());
 		
+		this.userTable = userTable;
+		this.sessionTable = sessionTable;
 	}
-	
-	
+
+
 	/**
 	 * Found here : http://stackoverflow.com/questions/9655181/convert-from-byte-array-to-hex-string-in-java
 	 * 
@@ -60,7 +65,7 @@ public class LoginController implements MiamController {
 		
 		long loginTime = System.currentTimeMillis();
 		
-		String uid_base =  salt + "" + u.getEmail() + "" + loginTime;
+		String uid_base =  salt + "" + u.getMail() + "" + loginTime;
 		
 		MessageDigest md5 = null;
 		try {
@@ -73,22 +78,33 @@ public class LoginController implements MiamController {
 		
 		String uid = bytesToHex(md5.digest(uid_base.getBytes()));
 		
-		System.out.println("Session uid generated for user '"+ u.getEmail() +"' : " + uid);
+		System.out.println("Session uid generated for user '"+ u.getMail() +"' : " + uid);
 		
-		boolean insertOK = this.miam.
+		Session newSession = new Session(uid, u.getId(), new Timestamp(loginTime + SESSION_DURATION));
+		
+		this.sessionTable.insert(newSession);
+		
+		/*boolean insertOK = this.miam.
 				insertInto(SESSIONS, 
 						SESSIONS.UID, 
 						SESSIONS.USER, 
 						SESSIONS.EXPIRATION).
 					values(uid, u.getID(), new Timestamp(loginTime + SESSION_DURATION)).
-				execute() == 1;
+				execute() == 1;*/
 				
-		if(insertOK) {//Insert successfull
+		//if(insertOK) {//Insert successfull
 
 			session.setAttribute("uid", uid);
-		}
+		//}
 	}
 
+	private void redirectTo(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
+		
+		request.setAttribute("action", action);
+		
+		request.getRequestDispatcher("/MiamServlet").forward(request, response);
+	}
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -99,12 +115,17 @@ public class LoginController implements MiamController {
 		System.out.println("User '" + userMail + "' tries to login with password '"+ userPassword + "'.");
 		
 	
-		User user = User.login(miam, userMail, userPassword);
+		User user = this.userTable.fetchOne(USER.MAIL, userMail);
 		
-		if(user == null) { //User doesn't exist or wrong password
+		if(user == null) {
+			this.redirectTo(request, response, "home");
+
+			return;
+		}
 		
-			request.getRequestDispatcher("/home.jsp").forward(request, response);
-			
+		if(!user.getPassword().equals(userPassword)) {
+			this.redirectTo(request, response, "home");
+
 			return;
 		}
 		
@@ -112,22 +133,16 @@ public class LoginController implements MiamController {
 		registerSession(user, request.getSession());
 		request.setAttribute("user", user);
 		
-		if(user.isAdmin()) { //user is admin
+		if(user.getAdmin() == 1) { //user is admin
 			
-			request.setAttribute("action", "admin");
-			
-			request.getRequestDispatcher("/MiamServlet").forward(request, response);
+			this.redirectTo(request, response, "admin");
 			
 		}
 		else {
 			
-			request.setAttribute("action", "search");
-			
-			request.getRequestDispatcher("/MiamServlet").forward(request, response);
+			this.redirectTo(request, response, "search");
 			
 		}
-		
-		
 	}
 
 }

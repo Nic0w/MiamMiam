@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="fr.esiea.web_dev.miammiam.core.User" %>
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.User" %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>		
 		<meta name="title" content=" MiamMiam"/>
@@ -29,7 +29,7 @@
 				<!-- PSEUDO MDP -->
 				<div id="login">
 					<form method="post" action="logout">
-							<input type="hidden" name="user" value="<%  out.print(((User)request.getAttribute("user")).getEmail());  %>"/>
+							<input type="hidden" name="user" value="<%= ((User)request.getAttribute("user")).getMail()  %>"/>
    					    	<input class="deconnection" type="submit" value="Deconexion" name="#" />	
 					</form>
 				</div>

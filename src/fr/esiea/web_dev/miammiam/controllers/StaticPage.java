@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.esiea.web_dev.miammiam.MiamController;
 
-public class PageController implements MiamController {
+public class StaticPage implements MiamController {
 
 	private final String jspPage;
 	
-	public PageController(String jsp) {
+	public StaticPage(String jsp) {
 		this.jspPage = jsp;
 	}
 
@@ -20,8 +20,6 @@ public class PageController implements MiamController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.getRequestDispatcher(this.jspPage).forward(request, response);
-		
-		
 	}
 
 }

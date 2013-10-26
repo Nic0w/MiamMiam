@@ -6,29 +6,26 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Enumeration;
 import java.util.Map;
 
-import javax.servlet.FilterRegistration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
-import com.google.common.collect.Maps;
-
+import fr.esiea.web_dev.miammiam.controllers.DynamicPage;
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.LogoutController;
-import fr.esiea.web_dev.miammiam.controllers.PageController;
-import fr.esiea.web_dev.miammiam.controllers.RestrictedPageController;
-import fr.esiea.web_dev.miammiam.core.User;
+import fr.esiea.web_dev.miammiam.controllers.StaticPage;
+import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao;
+import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
 
 /**
@@ -47,6 +44,8 @@ public class MiamServlet extends HttpServlet {
 	
 	private final DSLContext miam;
 	
+	private final Configuration miamConfig;
+	
     /**
      * Default constructor. 
      */
@@ -62,21 +61,28 @@ public class MiamServlet extends HttpServlet {
 		}
     	
     	this.miam = DSL.using(sqlConn, SQLDialect.MYSQL);
+    	this.miamConfig = this.miam.configuration();
     	
-    	PageController home = new PageController("home.jsp");
     	
-    	this.registerController("", home);
-    	this.registerController("home", home);
-    	this.registerController("apropos", new PageController("apropos.jsp"));
-    	this.registerController("contact", new PageController("contact.jsp"));
-    	this.registerController("inscription", new PageController("inscription.jsp"));
+    	UserDao userTable =			new UserDao(miamConfig);
+    	SessionDao sessionTable =	new SessionDao(miamConfig);
+    	RecipeDao recipeTable =		new RecipeDao(miamConfig);
     	
-    	this.registerController("search", new RestrictedPageController(this.miam, "search.jsp", false));
-    	this.registerController("admin", new RestrictedPageController(this.miam, "admin.jsp", true));
+    	StaticPage home = new StaticPage("home.jsp");
     	
-    	this.registerController("new_user", new InscriptionController(new UserDao(this.miam.configuration())));
-    	this.registerController("login", new LoginController(this.miam));
-    	this.registerController("logout", new LogoutController(this.miam));
+    	this.registerController("",		home);
+    	this.registerController("home",	home);
+    	
+    	this.registerController("apropos",		new StaticPage("apropos.jsp"));
+    	this.registerController("contact",		new StaticPage("contact.jsp"));
+    	this.registerController("inscription",	new StaticPage("inscription.jsp"));
+    	
+    	this.registerController("search", new DynamicPage(sessionTable, userTable, "search.jsp", false));
+    	this.registerController("admin", new DynamicPage(sessionTable, userTable, "admin.jsp", true));
+    	
+    	this.registerController("new_user", new InscriptionController(userTable));
+    	this.registerController("login", new LoginController(sessionTable, userTable));
+    	this.registerController("logout", new LogoutController(sessionTable, userTable));
     }
     
     private MiamServlet registerController(String action, MiamController controller) {
