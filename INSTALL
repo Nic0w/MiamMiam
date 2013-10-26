@@ -1,7 +1,38 @@
-Install java :
-sudo apt-get install openjdk-7-jre
+These are instructions on how to install MiamMiam for production on a fresh debian install.
 
-Install Apache & mod-jk :
-sudo apt-get install apache2-mpm-prefork libapache2-mod-jk
+Install Java, Apache & mod-jk and MySQL Server :
 
-http://apache.mirrors.multidist.eu/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz
+sudo apt-get install openjdk-7-jre apache2-mpm-prefork libapache2-mod-jk mysql-server
+
+Install Tomcat & Maven :
+
+chmod +x config_prod.sh
+./config_prod.sh
+
+This script will download Tomcat and Maven and configure them.
+Then you need to install 'miam' user and 'miam' database into MySQL :
+
+mysql -uroot -p < miam_structure.sql
+mysql -uroot -p < miam_user.sql
+
+The -p option will prompt you for the root password you defined during the install of mysql-server. Don't use it if you didn't set a password (which is a bad idea)
+
+Configure and launch Maven :
+
+export JAVA_HOME=/usr/lib/jvm/java-7-opendjk-i386
+export PATH=/opt/apache-maven-3.1.1/bin:$PATH
+mvn deploy
+
+You should see a BUILD SUCCESS. Then restart apache :
+
+sudo service apache2 restart
+
+MiamMiam should be running at http://localhost/MiamMiam/
+
+
+
+
+
+
+
+
