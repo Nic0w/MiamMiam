@@ -85,8 +85,6 @@ public class DynamicPage extends StaticPage {
 				return;
 			}
 			
-			System.out.println("AND HERE WE GO MOTHER FUCKER !");
-			
 			super.execute(request, response);
 		
 			return;

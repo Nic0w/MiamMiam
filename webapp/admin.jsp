@@ -1,5 +1,5 @@
-
 <%@include file="includes/logged_header.jsp" %>	
+<%@ page import="java.util.List" %>
 		
 		<!-- HEART -->
 		<div class="center container">
@@ -17,20 +17,14 @@
 				
 				
 				<% 
-				
-					List<User>
-				
-				
+					for(User u : (List<User>) request.getAttribute("users")) {
+						
+						out.println("<tr>");
+						out.println(String.format("<td>%s</td>", u.getMail()));
+						out.println(String.format("<td><a href=\"delete_user?user=%s\">Supprimer</a></td>", u.getMail()));
+						out.println("</tr>");
+					}
 				%>
-				
-				<tr>
-					<td>Nic0w@gmail.com</td>
-					<td><a href="#">Supprimer</a></td>
-				</tr>
-				<tr>
-					<td>bob@gmail.com</td>
-					<td><a href="#">Supprimer</a></td>
-				</tr>
 			</table>
 			
 			<h2>Recap recette</h2>

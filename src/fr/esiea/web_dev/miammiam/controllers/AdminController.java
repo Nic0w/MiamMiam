@@ -44,6 +44,10 @@ public class AdminController extends DynamicPage {
 		
 		List<Recipe> recipes = this.recipeTable.findAll();
 		
+		if(users == null)
+		 System.out.println("probmmele");
+		else
+			System.out.println("Users : " + users.size());
 		
 		request.setAttribute("users", users);
 		request.setAttribute("recipes", recipes);

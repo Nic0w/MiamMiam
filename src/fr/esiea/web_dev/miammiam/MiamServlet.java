@@ -19,6 +19,7 @@ import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
+import fr.esiea.web_dev.miammiam.controllers.AdminController;
 import fr.esiea.web_dev.miammiam.controllers.DynamicPage;
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
@@ -39,7 +40,7 @@ public class MiamServlet extends HttpServlet {
 	private final Map<String, MiamController> controllers = newHashMap();
 	
 	private static final String DB_USER 		= "miam";
-	private static final String DB_PASSWORD	= "test"; //OMG Hardcoded password !
+	private static final String DB_PASSWORD	= "test"; //hardcoded password !
 	private static final String DB_URL		= "jdbc:mysql://localhost:3306/miam";
 	
 	private final DSLContext miam;
@@ -78,7 +79,7 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("inscription",	new StaticPage("inscription.jsp"));
     	
     	this.registerController("search", new DynamicPage(sessionTable, userTable, "search.jsp", false));
-    	this.registerController("admin", new DynamicPage(sessionTable, userTable, "admin.jsp", true));
+    	this.registerController("admin", new AdminController(sessionTable, userTable, recipeTable, "admin.jsp"));
     	
     	this.registerController("new_user", new InscriptionController(userTable));
     	this.registerController("login", new LoginController(sessionTable, userTable));
