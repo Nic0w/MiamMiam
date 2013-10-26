@@ -37,7 +37,7 @@ echo "<tomcat-users>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
 echo "  <role rolename=\"manager-gui\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
 echo "  <role rolename=\"admin-gui\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
 echo "  <role rolename=\"manager-script\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
-echo "  <user username=\"deploy\" password=\"$TOMCAT_ADMIN_PASSWORD\" roles=\"manager-script\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
+echo "  <user username=\"admin\" password=\"$TOMCAT_ADMIN_PASSWORD\" roles=\"manager-script\"/>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
 echo "</tomcat-users>" | sudo tee -a apache-tomcat-7.0.42/conf/tomcat-users.xml
 
 cd /opt
