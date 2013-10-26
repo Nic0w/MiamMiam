@@ -32,6 +32,7 @@
                 <url>http://127.0.0.1:8080/manager</url>
                 <server>tomcat</server>
                 <path>/MiamMiam</path>
+                <warSourceDirectory>${basedir}/target/</warSourceDirectory>
             </configuration>
         </plugin>
         <plugin>
