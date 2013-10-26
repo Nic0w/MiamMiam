@@ -10,7 +10,7 @@ echo "JkLogLevel debug" | sudo tee -a /etc/apache2/mods-available/jk.load
 echo "JkLogStampFormat \"[%a %b %d %H:%M:%S %Y] \"" | sudo tee -a /etc/apache2/mods-available/jk.load
 
 sudo sed -i '23 a\JkMount /MiamMiam/* worker1' /etc/apache2/sites-enabled/000-default
-sudo sed -i '/\(.*\)JkWorkersFile/s/^/#/g' /etc/apache2/mods-available/jk.conf
+sudo sed -i '/\(.*\)JkWorkersFile/s/^/#/g' /etc/apache2/mods-enabled/jk.conf
 
 sudo touch /etc/apache2/workers.properties
 echo "workers.tomcat_home=/srv/apache-tomcat-7.0.42" | sudo tee -a /etc/apache2/workers.properties
