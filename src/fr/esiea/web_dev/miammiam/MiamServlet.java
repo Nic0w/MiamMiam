@@ -24,6 +24,7 @@ import fr.esiea.web_dev.miammiam.controllers.DynamicPage;
 import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.LogoutController;
+import fr.esiea.web_dev.miammiam.controllers.RecipeController;
 import fr.esiea.web_dev.miammiam.controllers.StaticPage;
 import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
@@ -71,6 +72,8 @@ public class MiamServlet extends HttpServlet {
     	
     	StaticPage home = new StaticPage("home.jsp");
     	
+    	RecipeController recipe = new RecipeController(sessionTable, userTable, recipeTable, "admin_new_recipe.jsp");
+    	
     	this.registerController("",		home);
     	this.registerController("home",	home);
     	
@@ -80,6 +83,10 @@ public class MiamServlet extends HttpServlet {
     	
     	this.registerController("search", new DynamicPage(sessionTable, userTable, "search.jsp", false));
     	this.registerController("admin", new AdminController(sessionTable, userTable, recipeTable, "admin.jsp"));
+    	
+    	this.registerController("new_recipe", recipe);
+    	this.registerController("add_recipe", recipe);
+    	this.registerController("delete_recipe", recipe);
     	
     	this.registerController("new_user", new InscriptionController(userTable));
     	this.registerController("login", new LoginController(sessionTable, userTable));

@@ -27,13 +27,6 @@ public class AdminController extends DynamicPage {
 		this.recipeTable = recipeDao;
 		
 	}
-
-	/*private List<User> getAllUsers() {
-		
-		
-		
-		
-	}*/
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

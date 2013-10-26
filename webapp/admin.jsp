@@ -1,6 +1,6 @@
 <%@include file="includes/logged_header.jsp" %>	
 <%@ page import="java.util.List" %>
-		
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe" %>		
 		<!-- HEART -->
 		<div class="center container">
 		
@@ -34,18 +34,18 @@
 					<th>Voir</th>
 					<th>Supprimer</th>
 				</tr>
-				<tr>
-					<td>Banana Split</td>
-					<td><a href="#">Voir</a></td>
-					<td><a href="#">Supprimer</a></td>
-				</tr>
-				<tr>
-					<td>Clafoutis</td>
-					<td><a href="#">Voir</a></td>
-					<td><a href="#">Supprimer</a></td>
-				</tr>
+				<% 
+					for(Recipe r : (List<Recipe>) request.getAttribute("recipes")) {
+						
+						out.println("<tr>");
+						out.println(String.format("<td>%s</td>", r.getName()));
+						out.println(String.format("<td><a href=\"recipe?id=%d\">Voir</a></td>", r.getId()));
+						out.println(String.format("<td><a href=\"delete_recipe?id=%d\">Supprimer</a></td>", r.getId()));
+						out.println("</tr>");
+					}
+				%>
 			</table>
-			<form method="#" action="#">
+			<form method="post" action="new_recipe">
 				<input class="button" type="submit" value="Créer recette" />
 			</form>
 		
