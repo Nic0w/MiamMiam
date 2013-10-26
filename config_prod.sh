@@ -14,7 +14,7 @@ sudo sed -i '/\(.*\)JkWorkersFile/s/^/#/g' /etc/apache2/mods-enabled/jk.conf
 
 sudo touch /etc/apache2/workers.properties
 echo "workers.tomcat_home=/srv/apache-tomcat-7.0.42" | sudo tee -a /etc/apache2/workers.properties
-echo "workers.java_home=/usr/lib/jvm/java-7-opendjk-i386" | sudo tee -a /etc/apache2/workers.properties
+echo "workers.java_home=/usr/lib/jvm/java-7-openjdk-i386" | sudo tee -a /etc/apache2/workers.properties
 echo "ps=/" | sudo tee -a /etc/apache2/workers.properties
 echo "worker.list=worker1" | sudo tee -a /etc/apache2/workers.properties
 echo "worker.worker1.port=8009" | sudo tee -a /etc/apache2/workers.properties
