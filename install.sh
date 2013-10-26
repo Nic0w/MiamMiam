@@ -25,4 +25,7 @@ sudo wget http://apache.mirrors.multidist.eu/tomcat/tomcat-7/v7.0.42/bin/apache-
 
 sudo tar -xvf apache-tomcat-7.0.42.tar.gz
 
+cd /opt
+
+sudo wget http://mir2.ovh.net/ftp.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
 
