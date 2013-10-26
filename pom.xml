@@ -51,7 +51,7 @@
                             <driver>com.mysql.jdbc.Driver</driver>
                             <url>jdbc:mysql://localhost:3306/miam</url>
                             <user>miam</user>
-                            <password>wJsYBGR74BMa4ups</password>
+                            <password>test</password>
                         </jdbc>
                         <generator>
                             <database>
