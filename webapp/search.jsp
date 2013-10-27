@@ -47,6 +47,9 @@
 				
 				Recipe recipe = recipes.fetchOneById(record.getRecipe());
 				
+				if(recipe == null)
+					continue;
+				
 				out.println("<tr>");
 				out.println(String.format("<td>%s</td>", record.getDate().toString()));
 				out.println(String.format("<td>%s</td>", recipe.getName()));
@@ -54,15 +57,6 @@
 			}
 			
 			%>
-				
-				<tr>
-					<td>19 mars 2013</td>
-					<td>Clafoutis</td>
-				</tr>
-				<tr>
-					<td>02 juillet 2012</td>
-					<td>Cake à la noix de coco</td>
-				</tr>
 			</table>
 		</div>
 		<!-- END HEART -->

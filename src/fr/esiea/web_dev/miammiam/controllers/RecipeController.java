@@ -107,6 +107,12 @@ public class RecipeController extends DynamicPage {
 					for(Entry<String, String[]> s : args.entrySet())
 						if(s.getValue()[0].equalsIgnoreCase("on"))
 							try {
+								
+								if(!ingredients.get(s.getKey()).equals("non")) {
+									temp++;
+									continue;
+								}
+								
 								if(format.parse(ingredients.get(s.getKey())).floatValue() > 0)
 									temp++;
 							} catch (ParseException e) {

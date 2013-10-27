@@ -30,7 +30,6 @@ public class SearchRecipePage extends DynamicPage {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
 		Session session = super.getStoredSession(request.getSession());
 		
 		List<RecipeHistory> records = this.historyTable.fetchByUser(session.getUser());
