@@ -241,17 +241,18 @@ public class RecipeController extends DynamicPage {
 				ingredients.put("vanilla", args.get("vanilla")[0]);
 				ingredients.put("vanilla_sugar", args.get("vanilla_sugar")[0]);
 				ingredients.put("sugar", args.get("sugar")[0]);
-				ingredients.put("other", args.get("other")[0]);
+				
+				ingredients.put("other", args.get("other")[0].replace("script", "").replace("img", ""));
 				
 				Recipe newRecipe = new Recipe(
 						null, 
-						args.get("name")[0], 
-						args.get("photo")[0], 
+						args.get("name")[0].replace("script", "").replace("img", ""), 
+						args.get("photo")[0].replace("script", "").replace("img", ""), 
 						Integer.parseInt(args.get("nb_people")[0]),
 						Integer.parseInt(args.get("prep_time")[0]), 
 						Integer.parseInt(args.get("cooking_time")[0]), 
 						json.toJson(ingredients), 
-						args.get("steps")[0]);
+						args.get("steps")[0].replace("script", "").replace("img", ""));
 
 				this.recipeTable.insert(newRecipe);
 				
