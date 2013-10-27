@@ -91,6 +91,7 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("add_recipe", recipe);
     	this.registerController("delete_recipe", recipe);
     	this.registerController("search_recipe", recipe);
+    	this.registerController("recipe", recipe);
     	
     	this.registerController("new_user", new InscriptionController(userTable));
     	this.registerController("login", new LoginController(sessionTable, userTable));

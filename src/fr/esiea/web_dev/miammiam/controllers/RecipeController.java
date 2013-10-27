@@ -52,7 +52,26 @@ public class RecipeController extends DynamicPage {
 		
 		switch((String)request.getAttribute("action")) {
 		
+			case "recipe" : {
+				
+				Integer recipeId = Integer.parseInt(request.getParameter("id"));
+				
+				Recipe selected = this.recipeTable.fetchOneById(recipeId);
+				
+				request.setAttribute("recipe", selected);
+				
+				super.jspPage = "recipe.jsp";
+				
+				super.isAdminOnly = false;
+				
+				super.execute(request, response);
+				
+				return;
+			}
+		
 			case "new_recipe" : 
+				
+				System.out.println("plop " + super.jspPage);
 				
 				super.execute(request, response);
 				return;

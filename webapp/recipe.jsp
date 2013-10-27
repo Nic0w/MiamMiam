@@ -1,10 +1,16 @@
 <%@include file="includes/logged_header.jsp" %>		
-		
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe" %>		
+
+<%
+
+	Recipe recipe = (Recipe) request.getAttribute("recipe");
+
+%>		
 		<!-- HEART -->
 		<div class="container">
 			<div class="center">	
-				<img class="recipeImg" src="img2/images_recettes/clafoutis.jpg"/>
-				<div class="recipeName">Clafoutis aux cerises</div>
+				<img class="recipeImg" src="<%= recipe.getPhoto() %>"/>
+				<div class="recipeName"><%= recipe.getName() %></div>
 			</div>
 			<div class=" corp center">	
 				<ol class="recipeIngredient">
@@ -18,9 +24,9 @@
 				</ol>
 
 				<ol class="recipeCooking">
-					<li>6 personnes</li>
-					<li>10min de préparation</li>
-					<li>10min de cuisson</li>
+					<li><%= recipe.getPersons() %> personnes</li>
+					<li><%= recipe.getPrepTime() %>min de préparation</li>
+					<li><%= recipe.getCookingTime() %>min de cuisson</li>
 				</ol>
 			</div>
 			<div class="center recipe">
