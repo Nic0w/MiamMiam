@@ -2,23 +2,23 @@
 					
 		<!--  HEART -->
 		<div class="center">
-		<h1>Pr茅sentation de l'茅quipe</h1>
+		<h1>Pr閟entation de l'閝uipe</h1>
 			<div>
 				<img id="" src="img2/nic0w.jpg" alt="photo Nico"/>
 				<p class="presentation">Nicolas BROQUET</p>
 				<div class="info">
-					<h2>Pr茅c茅dement:</h2>
-					<p>Morpho: Internship 路 Osny 路 18 June 2012 to 17 August 2012</p>
-					<p>BDE Esiea: Chief Information Officer 路 Ivry-sur-Seine 路 1 June 2012 to 14 May 2013</p>
+					<h2>Pr閏閐ement:</h2>
+					<p>Morpho: Internship, Osny, 18 June 2012 to 17 August 2012</p>
+					<p>BDE Esiea: Chief Information Officer, Ivry-sur-Seine, 1 June 2012 to 14 May 2013</p>
 				</div>
 			</div>
 			<div>
 				<img id="" src="img2/syl.jpg" alt="photo Sylvain"/>
 				<p class="presentation">Sylvain PRUDHON</p>
 				<div class="info">
-					<h2>Pr茅c茅dement:</h2>
-					<p>WASSA: Internship 路 Boulogne Billancourt 路 04 June 2012 to 31 August 2012</p>
-					<p>KPS Esiea: Treasurer | Anaconda manager 路 Ivry-sur-Seine 路 1 June 2012 to 14 May 2013</p>
+					<h2>Pr閏閐ement:</h2>
+					<p>WASSA: Internship, Boulogne Billancourt, 04 June 2012 to 31 August 2012</p>
+					<p>KPS Esiea: Treasurer | Anaconda manager, Ivry-sur-Seine, 1 June 2012 to 14 May 2013</p>
 				</div>
 			</div>
 		</div>	
