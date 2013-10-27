@@ -15,8 +15,8 @@
 					</li>
 				</ul>
 			</div>	
-			<a href="#" class="previous">â€¹</a>
-			<a href="#" class="next">â€º</a>
+			<a href="#" class="previous">&lt;</a>
+			<a href="#" class="next">&gt;</a>
 			<ul class="pagination">
 				<li><a href="#"></a></li>
 				<li><a href="#"></a></li>
@@ -28,26 +28,26 @@
 			<div class="center">
 				<div id="productDesc" class="product">		
 					<h2>Fonctionnement</h2>
-					<p>Cette application permet à  nos membres d'accéder en illimité et gratuitement à  toutes nos recettes de manière simple. En effet en une étape seulement, il sélectionne les ingrédients qu'il a Ã  sa disposition et notre moteur de recherche va lui proposer toutes les recettes de dessert qui correspondent Ã  ses attentes. Si il souhaite retrouver une recette qu'il a dÃ©jÃ  prÃ©parÃ©, il accÃ¨dera Ã  son historique personnalisÃ©. <b style="color: blue; text-decoration:underline">Pour les tests: log admin: admin | mdp admin: admin et log user: root | mdp user: toor</b>.
+					<p>Cette application permet à  nos membres d'accéder en illimité et gratuitement à  toutes nos recettes de manière simple. En effet en une étape seulement, il sélectionne les ingrédients qu'il a à sa disposition et notre moteur de recherche va lui proposer toutes les recettes de dessert qui correspondent à ses attentes. Si il souhaite retrouver une recette qu'il a déjà  préparé, il accédera à son historique personnalisé. <b style="color: blue; text-decoration:underline">Pour les tests: log admin: admin | mdp admin: admin et log user: root | mdp user: toor</b>.
 					</p>
 				</div>
 				<div class="product">
 					<img src="img2/images_recettes/cremeBrulee.jpg" alt= "first picture of the house in the description"/>
-					<h3> CrÃ¨me brulÃ©e </h3>
-					<p>La crÃ¨me brulÃ©e est Ã  base de jaunes dâ€™Å“ufs et de lait, saupoudrÃ©e de sucre et brulÃ©e Ã  lâ€™aide dâ€™une pelle de feu rouge vif. A ce jour, plusieurs pays revendique lâ€™origine de cette recette, mais la plus ancienne rÃ©fÃ©rence est bien franÃ§aise.
+					<h3> Crème brulée </h3>
+					<p>La crème brulée est à  base de jaunes d'oeufs et de lait, saupoudrée de sucre et brulée à l'aide d'une pelle de feu rouge vif. A ce jour, plusieurs pays revendique l'origine de cette recette, mais la plus ancienne référence est bien française.
 					</p>
 				</div>			
 				<div class="product">
 					<img src="img2/images_recettes/banana.jpg" alt= "second picture of the house in the description"/>
 					<h3> Banana split </h3>
-					<p>Le banana split est un dessert glacÃ© composÃ© traditionnellement d'une banane coupÃ©e en longueur, enserrant trois boules de glaces (vanille, chocolat, fraise en France ou trois boules vanille en Belgique).
+					<p>Le banana split est un dessert glacé composé traditionnellement d'une banane coupée en longueur, enserrant trois boules de glaces (vanille, chocolat, fraise en France ou trois boules vanille en Belgique).
 					</p>
 				</div>
 				<div class="last-product">
 					<img src="img2/images_recettes/profiteroles.jpg" alt= "last picture of the house in the description"/>
 					<h3> Profiteroles </h3>
-					<p>Le profiteroles est une chouquette remplie de crÃ¨me pÃ¢tissiÃ¨re ou crÃ¨me glacÃ©e Ã  la vanille accompagnÃ©e trÃ¨s souvent de chantilly.
-Elle peut se manger Ã  tempÃ©rature ambiante ou bien glacÃ©e et recouverte de chocolat chaud.
+					<p>Le profiteroles est une chouquette remplie de crême patissière ou crême glacée Ã  la vanille accompagnée très souvent de chantilly.
+Elle peut se manger à température ambiante ou bien glacée et recouverte de chocolat chaud.
 					</p>
 				</div>
 			</div>
