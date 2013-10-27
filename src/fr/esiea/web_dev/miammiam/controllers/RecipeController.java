@@ -1,5 +1,6 @@
 package fr.esiea.web_dev.miammiam.controllers;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -59,6 +62,11 @@ public class RecipeController extends DynamicPage {
 				
 				Recipe selected = this.recipeTable.fetchOneById(recipeId);
 				
+				if(selected==null) {
+					super.redirectToHome(request, response);
+					return;
+				}
+				
 				request.setAttribute("recipe", selected);
 				
 				
@@ -68,7 +76,66 @@ public class RecipeController extends DynamicPage {
 				
 				Map<String, String> ingredients = (Map<String, String>) gson.fromJson(selected.getIngredients(), mapType);
 				
+				List<String> translated = newArrayList();
 				
+				NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
+				
+				for(Entry<String, String> i : ingredients.entrySet()) {
+					
+					String value = i.getValue();
+					String ingredient = i.getKey();
+					
+					Number quantity = 0;
+					
+					try {
+						quantity = format.parse(value);
+					} catch (ParseException e) {}
+					
+					switch(ingredient) {
+					
+						case "fruit" :
+						case "other" : translated.add(value); break;
+						
+						case "sugar" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sg de sucre.", value));
+							break;
+						case "milk" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sL de lait.", value));
+							break;
+						case "egg" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%s oeuf(s).", value));
+							break;
+						case "coconut" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sg de noix de coco.", value));
+							break;
+						case "flour" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sg de farine.", value));
+							break;
+						case "oil" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%s c.s d'huile.", value));
+							break;
+						case "butter" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sg de beurre.", value));
+							break;
+						case "vanilla" : 
+							if(quantity.floatValue() > 0)
+								translated.add(String.format("%sg de vanille.", value));
+							break;
+							
+					
+					}
+					
+				}
+				
+				
+				request.setAttribute("ingredients", translated);
 				
 				super.jspPage = "recipe.jsp";
 				

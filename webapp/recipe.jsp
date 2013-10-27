@@ -1,17 +1,12 @@
 <%@include file="includes/logged_header.jsp" %>		
 <%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe" %>		
-<%@ page import="com.google.gson.Gson" %>
-<%@ page import="com.google.gson.reflect.TypeToken" %>
-<%@ page import="java.lang.reflect.Type" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
 <%
 
 	Recipe recipe = (Recipe) request.getAttribute("recipe");
 
-
+	List<String> ingredients = (List<String>) request.getAttribute("ingredients");
 	
-	
-
 %>		
 		<!-- HEART -->
 		<div class="container">
@@ -21,13 +16,13 @@
 			</div>
 			<div class=" corp center">	
 				<ol class="recipeIngredient">
-					<li>50g de farine</li>
-					<li>20g de sucre</li>
-					<li>4 cuillères à  soupe d'huile</li>
-					<li>1/2 L de lait</li>
-					<li>3 oeufs</li>
-					<li>Fruits selon le clafoutis</li>
-					<li>Beurre pour le moule</li>
+				
+				<%
+					for(String s : ingredients)
+						out.println("<li>" + s + "</li>");
+				
+				%>
+				
 				</ol>
 
 				<ol class="recipeCooking">
