@@ -3,6 +3,7 @@ package fr.esiea.web_dev.miammiam.controllers;
 import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.Part;
 
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
@@ -40,19 +42,62 @@ public class RecipeController extends DynamicPage {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
+		Gson json = new Gson();
+		
 		switch((String)request.getAttribute("action")) {
 		
 			case "new_recipe" : 
 				super.execute(request, response);
 				return;
 				
+			case "search_recipe" : {
+				
+				Map<String, String[]> args = request.getParameterMap();
+				
+				Type mapType = new TypeToken<Map<String, String>>(){}.getType();
+				
+				System.out.println(json.toJson(args));
+				
+				Recipe selected=null;
+				int matching = 0;
+				int temp = 0;
+				
+				for(Recipe r : this.recipeTable.findAll()) {
+					
+					Map<String, String> ingredients = (Map<String, String>) json.fromJson(r.getIngredients(), mapType);
+					
+					for(Entry<String, String[]> s : args.entrySet())
+						if(s.getValue()[0].equalsIgnoreCase("on"))
+							if(Integer.parseInt(ingredients.get(s.getKey())) > 0)
+								temp++;
+						
+					if(temp>matching) {
+						selected = r;
+						matching = temp;
+						temp = 0;
+					}
+					
+				}
+				
+				request.setAttribute("recipe", selected);
+				
+				System.out.println("plop");
+				
+				super.jspPage = "recipe.jsp";
+				
+				super.isAdminOnly = false;
+				
+				super.execute(request, response);
+				
+				return;
+			}
+				
+				
 			case "add_recipe" :
 				
 				Map<String, String[]> args = request.getParameterMap();
 				
 				Map<String, String> ingredients = newHashMap();
-				
-				Gson json = new Gson();
 				
 				ingredients.put("fruit", args.get("fruit")[0]);
 				ingredients.put("coconut", args.get("coconut")[0]);

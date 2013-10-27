@@ -10,7 +10,7 @@
 				<ol class="recipeIngredient">
 					<li>50g de farine</li>
 					<li>20g de sucre</li>
-					<li>4 cuillères à soupe d'huile</li>
+					<li>4 cuill�res � soupe d'huile</li>
 					<li>1/2 L de lait</li>
 					<li>3 oeufs</li>
 					<li>Fruits selon le clafoutis</li>
@@ -19,18 +19,19 @@
 
 				<ol class="recipeCooking">
 					<li>6 personnes</li>
-					<li>10min de préparation</li>
+					<li>10min de pr�paration</li>
 					<li>10min de cuisson</li>
 				</ol>
 			</div>
 			<div class="center recipe">
-				<p>Préchauffez le four th.6 (180°C).</p>
-				<p>Mélangez la farine, le sucre, l'huile et les œufs dans une terrine, mélangez bien afin d'obtenir une pâte homogène.</p>
-				<p>Ajoutez le lait pour obtenir une pâte un peu plus épaisse que la pâte à crêpes.</p>
+				<p>Pr�chauffez le four th.6 (180°C).</p>
+				<p>M�langez la farine, le sucre, l'huile et les oeufs dans une terrine, m�langez bien afin d'obtenir une pate homog�ne.</p>
+				<p>Ajoutez le lait pour obtenir une pate un peu plus �paisse que la pate à cr�pes.</p>
 				<p>Beurrez un moule.</p>
 				<p>Ajoutez les fruits choisis.</p>
-				<p>Versez la pâte et enfournez pendant 40 min.</p>
+				<p>Versez la pate et enfournez pendant 40 min.</p>
 			</div>
 		</div>
 		<!-- END HEART -->
 		
+<%@include file="includes/footer.jsp" %>

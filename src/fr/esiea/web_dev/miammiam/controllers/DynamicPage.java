@@ -24,7 +24,7 @@ import fr.esiea.web_dev.miammiam.db.tables.pojos.User;
  */
 public class DynamicPage extends StaticPage {
 	
-	private final boolean isAdminOnly;
+	protected boolean isAdminOnly;
 	
 	private final SessionDao sessionTable;
 	private final UserDao userTable;
@@ -66,8 +66,6 @@ public class DynamicPage extends StaticPage {
 			throws ServletException, IOException {
 		
 		Session storedSession = this.getStoredSession(request.getSession());
-		
-		System.out.println("P0LOPOPLP");
 		
 		if(storedSession.getExpiration().after(new Date())) {
 			

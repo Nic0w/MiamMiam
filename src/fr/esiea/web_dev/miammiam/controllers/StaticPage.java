@@ -10,7 +10,7 @@ import fr.esiea.web_dev.miammiam.MiamController;
 
 public class StaticPage implements MiamController {
 
-	private final String jspPage;
+	protected String jspPage;
 	
 	public StaticPage(String jsp) {
 		this.jspPage = jsp;
