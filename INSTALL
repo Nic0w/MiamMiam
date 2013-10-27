@@ -17,7 +17,7 @@ mysql -uroot -p < miam_user.sql
 
 The -p option will prompt you for the root password you defined during the install of mysql-server. Don't use it if you didn't set a password (which is a bad idea)
 
-You should see a BUILD SUCCESS. Then restart apache :
+Then restart Apache and start tomcat :
 
 sudo /srv/apache-tomcat-7.0.42/bin/startup.sh
 sudo service apache2 restart
@@ -26,7 +26,7 @@ Configure and launch Maven :
 
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386
 export PATH=/opt/apache-maven-3.1.1/bin:$PATH
-mvn tomcat::deploy
+mvn tomcat:deploy
 
 You should see BUILD SUCCESS. Restart apache :
 
