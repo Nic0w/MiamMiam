@@ -2,7 +2,7 @@
 					
 		<!--  HEART -->
 		<div class="center">
-			<h1>CoordonnÃ©es</h1>
+			<h1>Coordonnées</h1>
 			<div>
 				<h2>Adresse</h2>
 				<p>Artus Brisebois</p>
