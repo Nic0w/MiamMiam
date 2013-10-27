@@ -1,5 +1,8 @@
 <%@include file="includes/logged_header.jsp" %>	
-		
+<%@ page import="java.util.List" %>
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe" %>
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao" %>
+<%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.RecipeHistory" %>		
 		<!-- HEART -->
 		<div class="center container">
 			<h1>Bienvenue Bob</h1>
@@ -30,17 +33,28 @@
 			</div>
 			<h2>Votre historique</h2>
 			
-			<%
-				
-			
-			
-			%>
-			
 			<table border="1">
 				<tr>
 					<th>Date</th>
 					<th>Recette cherchée</th>
 				</tr>
+							
+			<%
+				
+			RecipeDao recipes = (RecipeDao) request.getAttribute("recipes");
+			
+			for(RecipeHistory record : (List<RecipeHistory>) request.getAttribute("history")) {
+				
+				Recipe recipe = recipes.fetchOneById(record.getRecipe());
+				
+				out.println("<tr>");
+				out.println(String.format("<td>%s</td>", record.getDate().toString()));
+				out.println(String.format("<td>%s</td>", recipe.getName()));
+				out.println("</tr>");
+			}
+			
+			%>
+				
 				<tr>
 					<td>19 mars 2013</td>
 					<td>Clafoutis</td>

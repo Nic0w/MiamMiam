@@ -25,8 +25,10 @@ import fr.esiea.web_dev.miammiam.controllers.InscriptionController;
 import fr.esiea.web_dev.miammiam.controllers.LoginController;
 import fr.esiea.web_dev.miammiam.controllers.LogoutController;
 import fr.esiea.web_dev.miammiam.controllers.RecipeController;
+import fr.esiea.web_dev.miammiam.controllers.SearchRecipePage;
 import fr.esiea.web_dev.miammiam.controllers.StaticPage;
 import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao;
+import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeHistoryDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
 
@@ -66,13 +68,14 @@ public class MiamServlet extends HttpServlet {
     	this.miamConfig = this.miam.configuration();
     	
     	
-    	UserDao userTable =			new UserDao(miamConfig);
-    	SessionDao sessionTable =	new SessionDao(miamConfig);
-    	RecipeDao recipeTable =		new RecipeDao(miamConfig);
+    	UserDao userTable =				new UserDao(miamConfig);
+    	SessionDao sessionTable =		new SessionDao(miamConfig);
+    	RecipeDao recipeTable =			new RecipeDao(miamConfig);
+    	RecipeHistoryDao historyTable =	new RecipeHistoryDao(miamConfig);
     	
     	StaticPage home = new StaticPage("home.jsp");
     	
-    	RecipeController recipe = new RecipeController(sessionTable, userTable, recipeTable, "admin_new_recipe.jsp");
+    	RecipeController recipe = new RecipeController(sessionTable, userTable, recipeTable, historyTable, "admin_new_recipe.jsp");
     	
     	this.registerController("",		home);
     	this.registerController("home",	home);
@@ -81,7 +84,7 @@ public class MiamServlet extends HttpServlet {
     	this.registerController("contact",		new StaticPage("contact.jsp"));
     	this.registerController("inscription",	new StaticPage("inscription.jsp"));
     	
-    	this.registerController("search", new DynamicPage(sessionTable, userTable, "search.jsp", false));
+    	this.registerController("search", new SearchRecipePage(sessionTable, userTable, recipeTable, historyTable, "search.jsp", false));
     	this.registerController("admin", new AdminController(sessionTable, userTable, recipeTable, "admin.jsp"));
     	
     	this.registerController("new_recipe", recipe);

@@ -4,6 +4,7 @@ import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.sql.Timestamp;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,18 +18,23 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeDao;
+import fr.esiea.web_dev.miammiam.db.tables.daos.RecipeHistoryDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.SessionDao;
 import fr.esiea.web_dev.miammiam.db.tables.daos.UserDao;
 import fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe;
+import fr.esiea.web_dev.miammiam.db.tables.pojos.RecipeHistory;
+import fr.esiea.web_dev.miammiam.db.tables.pojos.Session;
 
 public class RecipeController extends DynamicPage {
 
 	private final RecipeDao recipeTable;
+	private final RecipeHistoryDao historyTable;
 	
-	public RecipeController(SessionDao sessionDao, UserDao userDao, RecipeDao recipeDao, String jsp) {
+	public RecipeController(SessionDao sessionDao, UserDao userDao, RecipeDao recipeDao, RecipeHistoryDao historyDao, String jsp) {
 		super(sessionDao, userDao, jsp, true);
 		
 		this.recipeTable = recipeDao;
+		this.historyTable = historyDao;
 	}
 
 	private void redirectToAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +53,7 @@ public class RecipeController extends DynamicPage {
 		switch((String)request.getAttribute("action")) {
 		
 			case "new_recipe" : 
+				
 				super.execute(request, response);
 				return;
 				
@@ -80,6 +87,17 @@ public class RecipeController extends DynamicPage {
 				}
 				
 				request.setAttribute("recipe", selected);
+				
+				Session storedSession = super.getStoredSession(request.getSession());
+				
+				RecipeHistory newElt = new RecipeHistory(
+				  		null,
+						storedSession.getUser(), 
+						selected.getId(), 
+						new Timestamp(System.currentTimeMillis())
+						);
+				
+				this.historyTable.insert(newElt);
 				
 				System.out.println("plop");
 				

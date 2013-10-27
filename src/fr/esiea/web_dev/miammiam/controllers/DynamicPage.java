@@ -51,7 +51,7 @@ public class DynamicPage extends StaticPage {
 		request.getRequestDispatcher("/MiamServlet").forward(request, response);
 	}
 	
-	private Session getStoredSession(HttpSession session) {
+	protected Session getStoredSession(HttpSession session) {
 		
 		String uid = (String) session.getAttribute("uid");
 		
