@@ -112,6 +112,9 @@ public class LoginController implements MiamController {
 		String userMail		= request.getParameter("pseudo");
 		String userPassword	= request.getParameter("pass"); 
 		
+		if(userMail == null || userPassword == null)
+			response.sendError(400, "You didn't provide a login and/or a password !");
+		
 		System.out.println("User '" + userMail + "' tries to login with password '"+ userPassword + "'.");
 		
 		

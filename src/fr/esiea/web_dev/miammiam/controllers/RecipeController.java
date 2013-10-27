@@ -11,9 +11,8 @@ import java.util.Map.Entry;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
-import com.google.common.collect.Maps;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -59,6 +58,15 @@ public class RecipeController extends DynamicPage {
 				Recipe selected = this.recipeTable.fetchOneById(recipeId);
 				
 				request.setAttribute("recipe", selected);
+				
+				
+				Gson gson = new Gson();
+				Type mapType = new TypeToken<Map<String, String>>(){}.getType();
+				
+				
+				Map<String, String> ingredients = (Map<String, String>) gson.fromJson(selected.getIngredients(), mapType);
+				
+				
 				
 				super.jspPage = "recipe.jsp";
 				

@@ -1,9 +1,16 @@
 <%@include file="includes/logged_header.jsp" %>		
 <%@ page import="fr.esiea.web_dev.miammiam.db.tables.pojos.Recipe" %>		
-
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="com.google.gson.reflect.TypeToken" %>
+<%@ page import="java.lang.reflect.Type" %>
+<%@ page import="java.util.Map" %>
 <%
 
 	Recipe recipe = (Recipe) request.getAttribute("recipe");
+
+
+	
+	
 
 %>		
 		<!-- HEART -->
@@ -30,12 +37,7 @@
 				</ol>
 			</div>
 			<div class="center recipe">
-				<p>Préchauffez le four th.6 (180°C).</p>
-				<p>Mélangez la farine, le sucre, l'huile et les oeufs dans une terrine, mélangez bien afin d'obtenir une pate homogène.</p>
-				<p>Ajoutez le lait pour obtenir une pate un peu plus épaisse que la pate à crèpes.</p>
-				<p>Beurrez un moule.</p>
-				<p>Ajoutez les fruits choisis.</p>
-				<p>Versez la pate et enfournez pendant 40 min.</p>
+				<%= recipe.getSteps() %>
 			</div>
 		</div>
 		<!-- END HEART -->

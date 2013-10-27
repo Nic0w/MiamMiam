@@ -91,6 +91,10 @@ ALTER TABLE  `recipe` CHANGE  `id`  `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 INSERT INTO `recipe` (`id`, `name`, `photo`, `persons`, `prep_time`, `cooking_time`, `ingredients`, `steps`) VALUES
 (1, 'Clafoutis aux cerises', 'img2/images_recettes/clafoutis.jpg', 6, 10, 10, '{"fruit":"oui","other":"Beurre pour le moule","flour":"50","coconut":"0","milk":"0.5","butter":"0","vanilla_sugar":"0","egg":"3","vanilla":"0","sugar":"50","oil":"4"}', '				<p>Préchauffez le four th.6 (180°C).</p>\r\n				<p>Mélangez la farine, le sucre, l''huile et les oeufs dans une terrine, mélangez bien afin d''obtenir une pate homogène.</p>\r\n				<p>Ajoutez le lait pour obtenir une pate un peu plus épaisse que la pate à crèpes.</p>\r\n				<p>Beurrez un moule.</p>\r\n				<p>Ajoutez les fruits choisis.</p>\r\n				<p>Versez la pate et enfournez pendant 40 min.</p>');
 
+INSERT INTO `recipe` (`id`, `name`, `photo`, `persons`, `prep_time`, `cooking_time`, `ingredients`, `steps`) VALUES
+(2, 'Crêpes', 'img2/images_recettes/crepes.jpg', 4, 5, 15, '{"fruit":"non","other":"beurre pour la poele","flour":"100","coconut":"0","milk":"0.375","butter":"0","vanilla_sugar":"1","egg":"2","vanilla":"0","sugar":"0","oil":"0"}', '<p>Battez les oeufs dans un plat.</p>\r\n\r\n<p>Incorporez peu &agrave; peu la farine &agrave; la pr&eacute;paration tout en m&eacute;langeant.</p>\r\n\r\n<p>Faites de m&ecirc;me avec le lait.</p>\r\n\r\n<p>Incorporez le sucre vanill&eacute; et m&eacute;langez.</p>\r\n\r\n<p>Faites cuire la p&acirc;te dans une po&ecirc;le beurr&eacute;e bien chaude.</p>\r\n\r\n<p>Ajoutez du sucre, chocolat, glace ou autre directement dans votre assiette.</p>');
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
