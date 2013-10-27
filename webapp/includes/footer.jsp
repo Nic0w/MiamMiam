@@ -1,7 +1,7 @@
 		<!-- FOOTER -->		
 		<div id="footer">
 			<div class="center">		
-				<p>Copyright © 2013 Nicolas Broquet | Sylvain Prudhon All right reserved
+				<p>Copyright - 2013 Nicolas Broquet | Sylvain Prudhon All right reserved
 				</p>
 			</div>	
 		</div>

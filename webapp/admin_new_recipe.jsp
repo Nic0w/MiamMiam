@@ -14,7 +14,7 @@
 				<label class="labelForm" id="">Beurre (g)<input id="" class="inputForm" type="number" step="5" min="0" name="butter"></label>
 				<label class="labelForm" id="">Oeuf(s) <input id="" class="inputForm" type="number" step="1" min="0" name="egg"></label>
 				<label class="labelForm" id="">Fruit / Chocolat <input id="" class="inputForm" type="text"  name="fruit"></label>
-				<label class="labelForm" id="">Sachet de sucre vanillÃ© <input id="" class="inputForm" type="number" step="0.25" min="0" name="vanilla_sugar"></label>
+				<label class="labelForm" id="">Sachet de sucre vanillé <input id="" class="inputForm" type="number" step="0.25" min="0" name="vanilla_sugar"></label>
 				<label class="labelForm" id="">Noix de coco (g)<input id="" class="inputForm" type="number" step="5" min="0" name="coconut"></label>
 				<label class="labelForm" id="">Vanille (g)<input id="" class="inputForm" type="number" step="5" min="0" name="vanilla"></label>
 				<label class="labelForm" id="">Autre (sel, eau) <input id="" class="inputForm" type="text"  name="other"></label>

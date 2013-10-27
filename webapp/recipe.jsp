@@ -24,9 +24,9 @@
 				</ol>
 			</div>
 			<div class="center recipe">
-				<p>Préchauffez le four th.6 (180Â°C).</p>
+				<p>Préchauffez le four th.6 (180°C).</p>
 				<p>Mélangez la farine, le sucre, l'huile et les oeufs dans une terrine, mélangez bien afin d'obtenir une pate homogène.</p>
-				<p>Ajoutez le lait pour obtenir une pate un peu plus épaisse que la pate Ã  crèpes.</p>
+				<p>Ajoutez le lait pour obtenir une pate un peu plus épaisse que la pate à crèpes.</p>
 				<p>Beurrez un moule.</p>
 				<p>Ajoutez les fruits choisis.</p>
 				<p>Versez la pate et enfournez pendant 40 min.</p>

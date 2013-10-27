@@ -39,7 +39,7 @@
 			<table border="1">
 				<tr>
 					<th>Date</th>
-					<th>Recette cherchÃ©e</th>
+					<th>Recette cherchée</th>
 				</tr>
 				<tr>
 					<td>19 mars 2013</td>
@@ -47,7 +47,7 @@
 				</tr>
 				<tr>
 					<td>02 juillet 2012</td>
-					<td>Cake Ã  la noix de coco</td>
+					<td>Cake à la noix de coco</td>
 				</tr>
 			</table>
 		</div>
