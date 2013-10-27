@@ -54,6 +54,10 @@ public class LogoutController implements MiamController {
 		
 		User user = this.userTable.fetchOneById(storedSession.getUser());
 		
+		if(user==null)
+			user = new User(0, userMail, "test", 0);
+		
+		
 		if(user.getMail().equalsIgnoreCase(userMail)) {
 			
 			this.sessionTable.delete(storedSession);

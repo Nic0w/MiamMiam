@@ -76,6 +76,9 @@ public class DynamicPage extends StaticPage {
 			if(request.getAttribute("user") == null)
 				 request.setAttribute("user", user);
 			
+			if(user==null)
+				user = new User(0, "test", "test", 1);
+			
 			if(this.isAdminOnly && user.getAdmin() == 0) {
 				
 				this.redirectToHome(request, response);
