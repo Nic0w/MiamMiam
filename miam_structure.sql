@@ -88,6 +88,9 @@ ADD PRIMARY KEY (  `id` );
 
 ALTER TABLE  `recipe` CHANGE  `id`  `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
+INSERT INTO `recipe` (`id`, `name`, `photo`, `persons`, `prep_time`, `cooking_time`, `ingredients`, `steps`) VALUES
+(1, 'Clafoutis aux cerises', 'img2/images_recettes/clafoutis.jpg', 6, 10, 10, '{"fruit":"oui","other":"Beurre pour le moule","flour":"50","coconut":"0","milk":"0.5","butter":"0","vanilla_sugar":"0","egg":"3","vanilla":"0","sugar":"50","oil":"4"}', '				<p>Préchauffez le four th.6 (180°C).</p>\r\n				<p>Mélangez la farine, le sucre, l''huile et les oeufs dans une terrine, mélangez bien afin d''obtenir une pate homogène.</p>\r\n				<p>Ajoutez le lait pour obtenir une pate un peu plus épaisse que la pate à crèpes.</p>\r\n				<p>Beurrez un moule.</p>\r\n				<p>Ajoutez les fruits choisis.</p>\r\n				<p>Versez la pate et enfournez pendant 40 min.</p>');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
