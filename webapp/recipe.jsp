@@ -5,6 +5,9 @@
 
 	Recipe recipe = (Recipe) request.getAttribute("recipe");
 
+	if(recipe==null)
+		return;
+
 	List<String> ingredients = (List<String>) request.getAttribute("ingredients");
 	
 %>		

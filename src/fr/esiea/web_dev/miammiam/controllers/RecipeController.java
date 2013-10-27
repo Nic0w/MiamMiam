@@ -56,6 +56,14 @@ public class RecipeController extends DynamicPage {
 		
 		switch((String)request.getAttribute("action")) {
 		
+			case "new_recipe" : 
+			
+				System.out.println("plop " + super.jspPage);
+			
+				super.execute(request, response);
+				return;
+		
+		
 			case "recipe" : {
 				
 				Integer recipeId = Integer.parseInt(request.getParameter("id"));
@@ -145,13 +153,6 @@ public class RecipeController extends DynamicPage {
 				
 				return;
 			}
-		
-			case "new_recipe" : 
-				
-				System.out.println("plop " + super.jspPage);
-				
-				super.execute(request, response);
-				return;
 				
 			case "search_recipe" : {
 				
