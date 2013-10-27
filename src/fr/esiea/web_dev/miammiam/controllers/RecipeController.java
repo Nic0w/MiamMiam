@@ -5,13 +5,15 @@ import static com.google.common.collect.Maps.newHashMap;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -100,10 +102,16 @@ public class RecipeController extends DynamicPage {
 					
 					Map<String, String> ingredients = (Map<String, String>) json.fromJson(r.getIngredients(), mapType);
 					
+					NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
+					
 					for(Entry<String, String[]> s : args.entrySet())
 						if(s.getValue()[0].equalsIgnoreCase("on"))
-							if(Integer.parseInt(ingredients.get(s.getKey())) > 0)
-								temp++;
+							try {
+								if(format.parse(ingredients.get(s.getKey())).floatValue() > 0)
+									temp++;
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
 						
 					if(temp>matching) {
 						selected = r;
@@ -116,6 +124,11 @@ public class RecipeController extends DynamicPage {
 				request.setAttribute("recipe", selected);
 				
 				Session storedSession = super.getStoredSession(request.getSession());
+				
+				if(storedSession == null || selected == null) {
+					super.redirectToHome(request, response);
+					return;
+				}
 				
 				RecipeHistory newElt = new RecipeHistory(
 				  		null,
